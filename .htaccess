@@ -1,0 +1,34 @@
+# Tell LiteSpeed's server-level cache to never cache anything in this
+# folder. This app manages its own sessions/state and must never be
+# served from a stale cached response.
+<IfModule LiteSpeed>
+  CacheDisable public /
+</IfModule>
+
+# Belt-and-suspenders: explicit no-cache headers as well, in case the
+# LiteSpeed directive above isn't recognized on this exact server config.
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+</IfModule>
+
+# Stop WordPress's rewrite engine from intercepting anything in this
+# folder — without this, WordPress's own .htaccess rules can catch
+# requests here before they reach PHP and serve WordPress's 404 page
+# instead of actually running this app.
+RewriteEngine Off
+
+# Raise PHP's upload limits above the app's own 8MB per-file check.
+<IfModule mod_php.c>
+  php_value upload_max_filesize 12M
+  php_value post_max_size 12M
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 12M
+  php_value post_max_size 12M
+</IfModule>
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 12M
+  php_value post_max_size 12M
+</IfModule>

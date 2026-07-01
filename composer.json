@@ -1,0 +1,8 @@
+{
+    "name": "himaltech/crm",
+    "description": "Himal Tech internal CRM",
+    "require": {
+        "php": ">=7.4",
+        "dompdf/dompdf": "^3.0"
+    }
+}

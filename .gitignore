@@ -1,0 +1,20 @@
+# Real database credentials - never committed. Copy config/db.example.php
+# to config/db.php and fill in your own values.
+config/db.php
+
+# PHP session files - runtime data, not part of the codebase
+sessions/*
+!sessions/.htaccess
+!sessions/.gitkeep
+
+# Uploaded client/ticket files - runtime data, not part of the codebase
+uploads/clients/*
+uploads/tickets/*
+uploads/quote_requests/*
+!uploads/clients/.gitkeep
+!uploads/tickets/.gitkeep
+!uploads/quote_requests/.gitkeep
+
+# OS/editor clutter
+.DS_Store
+Thumbs.db
