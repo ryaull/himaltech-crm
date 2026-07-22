@@ -1,0 +1,8 @@
+# Files here are only ever meant to be reached via download.php, which checks
+# the requester's role before streaming a file. Block direct web access and
+# script execution entirely so a malicious upload can never run as code.
+<FilesMatch "\.(php|php5|phtml|pl|py|cgi|sh)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes -ExecCGI
+php_flag engine off

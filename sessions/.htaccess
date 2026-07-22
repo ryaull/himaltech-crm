@@ -1,0 +1,4 @@
+# Session data lives here instead of the server's shared/system temp folder,
+# since shared hosting often restricts PHP from writing there. Block all
+# web access to this folder outright — it should never be reachable by URL.
+Require all denied
